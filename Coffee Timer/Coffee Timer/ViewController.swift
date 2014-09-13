@@ -9,16 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var progressView: UIProgressView!
+    
+    var timerModel: TimerModel! {
+        willSet(newModel) {
+            println("About to change model to \(newModel)")
+        }
+        
+        didSet {
+            println("Set model to \(timerModel)")
+            updateUserInterface()
+        }
+    }
                             
     override func viewDidLoad() {
         super.viewDidLoad()
         
         println("View is loaded.")
+        title = "Root"
         
-        view.backgroundColor = UIColor.orangeColor()
+        setupModel()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,21 +35,33 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func buttonWasPressed(sender: AnyObject) {
-        println("Button was pressed.")
-        
-        // Get the current date and time
-        let date = NSDate.date()
-        
-        // Update the label
-        label.text = "Button pressed at \(date)"
+    override func shouldAutorotate() -> Bool {
+        return false
     }
-    @IBAction func sliderValueChanged(sender: AnyObject) {
-        println("Slider value changed to \(slider.value)")
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.toRaw())
+    }
+    
+    func setupModel() {
+        self.timerModel = TimerModel(coffeeName: "Colombian Coffee", duration: 240)
+    }
+    
+    func updateUserInterface() {
         
-        // Update our progressView's progress to match 
-        // the slider's value
-        progressView.progress = slider.value
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println("Preparing for segue with identifier:\(segue.identifier)")
+        
+        if segue.identifier == "pushDetail" {
+            let viewController = segue.destinationViewController as TimerDetailViewController
+            viewController.timerModel = timerModel
+        } else if segue.identifier == "editDetail" {
+            let navigationController = segue.destinationViewController as UINavigationController
+            let viewController = navigationController.topViewController as TimerEditViewController
+            viewController.timerModel = timerModel
+        }
     }
 }
 

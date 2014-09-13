@@ -12,6 +12,9 @@
 		5E1F8CE819839CB100A83E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E1F8CE619839CB100A83E4F /* Main.storyboard */; };
 		5E1F8CEA19839CB100A83E4F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1F8CE919839CB100A83E4F /* Images.xcassets */; };
 		5E1F8CF619839CB100A83E4F /* Coffee_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F8CF519839CB100A83E4F /* Coffee_TimerTests.swift */; };
+		5E1F8D001983E97A00A83E4F /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F8CFF1983E97A00A83E4F /* TimerModel.swift */; };
+		5E57B17C19C43A6300940B0B /* TimerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B17B19C43A6300940B0B /* TimerDetailViewController.swift */; };
+		5E57B18019C43F4600940B0B /* TimerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B17F19C43F4600940B0B /* TimerEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		5E1F8CEF19839CB100A83E4F /* Coffee TimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Coffee TimerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1F8CF419839CB100A83E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E1F8CF519839CB100A83E4F /* Coffee_TimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee_TimerTests.swift; sourceTree = "<group>"; };
+		5E1F8CFF1983E97A00A83E4F /* TimerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		5E57B17B19C43A6300940B0B /* TimerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerDetailViewController.swift; sourceTree = "<group>"; };
+		5E57B17F19C43F4600940B0B /* TimerEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				5E1F8CE219839CB000A83E4F /* AppDelegate.swift */,
-				5E1F8CE419839CB000A83E4F /* ViewController.swift */,
 				5E1F8CE619839CB100A83E4F /* Main.storyboard */,
+				5E57B17D19C43AAA00940B0B /* View Controllers */,
+				5E57B17E19C43AB100940B0B /* Models */,
 				5E1F8CE919839CB100A83E4F /* Images.xcassets */,
 				5E1F8CE019839CB000A83E4F /* Supporting Files */,
 			);
@@ -107,6 +114,24 @@
 				5E1F8CF419839CB100A83E4F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5E57B17D19C43AAA00940B0B /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5E1F8CE419839CB000A83E4F /* ViewController.swift */,
+				5E57B17B19C43A6300940B0B /* TimerDetailViewController.swift */,
+				5E57B17F19C43F4600940B0B /* TimerEditViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5E57B17E19C43AB100940B0B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E1F8CFF1983E97A00A83E4F /* TimerModel.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +233,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E1F8D001983E97A00A83E4F /* TimerModel.swift in Sources */,
+				5E57B18019C43F4600940B0B /* TimerEditViewController.swift in Sources */,
+				5E57B17C19C43A6300940B0B /* TimerDetailViewController.swift in Sources */,
 				5E1F8CE519839CB000A83E4F /* ViewController.swift in Sources */,
 				5E1F8CE319839CB000A83E4F /* AppDelegate.swift in Sources */,
 			);
@@ -395,6 +423,7 @@
 				5E1F8CFB19839CB100A83E4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E1F8CFC19839CB100A83E4F /* Build configuration list for PBXNativeTarget "Coffee TimerTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +432,7 @@
 				5E1F8CFE19839CB100A83E4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
