@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         println("Button was pressed.")
         
         // Get the current date and time
-        let date = NSDate.date()
+        let date = NSDate()
         
         // Update the label
         label.text = "Button pressed at \(date)"
