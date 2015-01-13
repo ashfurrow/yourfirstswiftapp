@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="QPX-BR-sTB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="QPX-BR-sTB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -62,6 +62,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="t4Z-Wk-rNK">
+                                <rect key="frame" x="16" y="252" width="288" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Coffee"/>
+                                    <segment title="Tea"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -83,46 +91,57 @@
                         <outlet property="nameField" destination="npo-LK-BsR" id="5he-iu-UAn"/>
                         <outlet property="secondsLabel" destination="o9t-ZX-swr" id="kHf-e6-DPs"/>
                         <outlet property="secondsSlider" destination="3cz-Qf-VrZ" id="UA6-a5-ZG5"/>
+                        <outlet property="timerTypeSegmentedControl" destination="t4Z-Wk-rNK" id="Xsy-8T-v7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4Q-7o-U5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="655" y="-99"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Timer List Table View Controller-->
+        <scene sceneID="caQ-F2-WrO">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Coffee_Timer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                <tableViewController id="kD2-R0-d2z" customClass="TimerListTableViewController" customModule="Coffee_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gDx-bc-50T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WYF-Ee-UAW">
-                                <rect key="frame" x="20" y="86" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Details">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="iqC-bS-pud" style="IBUITableViewCellStyleDefault" id="Fjo-fg-HWa">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fjo-fg-HWa" id="U3K-9X-1au">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iqC-bS-pud">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="hZm-k6-cBh" kind="push" identifier="pushDetail" id="F8N-LD-8Vt"/>
+                                    <segue destination="hZm-k6-cBh" kind="push" identifier="pushDetail" id="el5-BO-HFb"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nXj-90-hyh">
-                                <rect key="frame" x="145" y="124" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Edit">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="O35-Dl-n7z" kind="modal" identifier="editDetail" id="ggJ-gC-Lda"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dwf-Ul-lLP"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kD2-R0-d2z" id="giG-1g-dg5"/>
+                            <outlet property="delegate" destination="kD2-R0-d2z" id="awG-cT-Gpr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ymY-Z5-l0H">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bK7-wm-ACA">
+                            <connections>
+                                <segue destination="O35-Dl-n7z" kind="modal" identifier="newTimer" id="G0f-Ap-cCm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="O35-Dl-n7z" kind="modal" identifier="editDetail" id="D9r-zW-y8f"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ll8-8e-GWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="237" y="719"/>
         </scene>
@@ -162,7 +181,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="KgD-HS-IyI"/>
+                        <segue destination="kD2-R0-d2z" kind="relationship" relationship="rootViewController" id="SDS-XQ-qtS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kY7-cm-fv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,4 +194,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="G0f-Ap-cCm"/>
+    </inferredMetricsTieBreakers>
 </document>
