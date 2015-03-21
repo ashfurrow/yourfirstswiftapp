@@ -42,6 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("Application will terminate.")
     }
 
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        println("Application received local notification.")
 
+        let alertController = UIAlertController(title: notification.alertTitle, message: notification.alertBody, preferredStyle: .Alert)
+
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(okAction)
+
+        window!.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
+    }
 }
 
