@@ -16,7 +16,7 @@ class TimerDetailViewController: UIViewController {
 
     var timerModel: TimerModel!
 
-    var timer: NSTimer?
+    weak var timer: NSTimer?
     var notification: UILocalNotification?
     var timeRemaining: NSInteger {
         if let fireDate = notification?.fireDate {
@@ -114,7 +114,6 @@ class TimerDetailViewController: UIViewController {
         countdownLabel.text = reason.message()
         startStopButton.setTitle("Start", forState: .Normal)
         timer?.invalidate()
-        timer = nil
 
         if reason == .Cancelled {
             UIApplication.sharedApplication().cancelAllLocalNotifications()
