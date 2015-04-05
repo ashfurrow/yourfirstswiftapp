@@ -37,6 +37,9 @@ class TimerDetailViewController: UIViewController {
         durationLabel.text = "\(timerModel.duration / 60) min \(timerModel.duration % 60) sec"
 
         countdownLabel.text = "Timer not started."
+
+        timerModel.addObserver(self, forKeyPath: "duration", options: .New, context: nil)
+        timerModel.addObserver(self, forKeyPath: "name", options: .New, context: nil)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -70,6 +73,7 @@ class TimerDetailViewController: UIViewController {
     }
 
     func startTimer() {
+        navigationItem.rightBarButtonItem?.enabled = false
         navigationItem.setHidesBackButton(true, animated: true)
         startStopButton.setTitle("Stop", forState: .Normal)
         timer = NSTimer.scheduledTimerWithTimeInterval(1,
@@ -105,6 +109,7 @@ class TimerDetailViewController: UIViewController {
     }
 
     func stopTimer(reason: StopTimerReason) {
+        navigationItem.rightBarButtonItem?.enabled = true
         navigationItem.setHidesBackButton(false, animated: true)
         countdownLabel.text = reason.message()
         startStopButton.setTitle("Start", forState: .Normal)
@@ -115,5 +120,31 @@ class TimerDetailViewController: UIViewController {
             UIApplication.sharedApplication().cancelAllLocalNotifications()
         }
         notification = nil
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "editDetail" {
+            let navigationController = segue.destinationViewController as UINavigationController
+            let editViewController = navigationController.topViewController as TimerEditViewController
+
+            editViewController.timerModel = timerModel
+        }
+    }
+
+    deinit {
+        timerModel.removeObserver(self, forKeyPath: "duration")
+        timerModel.removeObserver(self, forKeyPath: "name")
+    }
+
+    override func observeValueForKeyPath(keyPath: String,
+        ofObject object: AnyObject,
+        change: [NSObject : AnyObject],
+        context: UnsafeMutablePointer<Void>) {
+
+        if keyPath == "duration" {
+            durationLabel.text = "\(timerModel.duration / 60) min \(timerModel.duration % 60) sec"
+        } else if keyPath == "name" {
+            title = timerModel.name
+        }
     }
 }

@@ -160,7 +160,7 @@ class TimerListTableViewController: UITableViewController {
                 let editViewController = navigationController.topViewController as! TimerEditViewController
 
                 editViewController.timerModel = timerModel
-                editViewController.delegate = self // Note the new line
+                editViewController.delegate = self
             }
         } else if let addButton = sender as? UIBarButtonItem {
             if segue.identifier == "newTimer" {
@@ -169,7 +169,7 @@ class TimerListTableViewController: UITableViewController {
 
                 editViewController.creatingNewTimer = true
                 editViewController.timerModel = TimerModel(name: "", duration: 240, type: .Coffee)
-                editViewController.delegate = self // Note the new line
+                editViewController.delegate = self
             }
         }
     }

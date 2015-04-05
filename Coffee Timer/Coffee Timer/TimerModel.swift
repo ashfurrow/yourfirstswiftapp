@@ -9,8 +9,8 @@
 import Foundation
 
 class TimerModel: NSObject {
-    var name = ""
-    var duration = 0
+    dynamic var name = ""
+    dynamic var duration = 0
     var type = TimerType.Coffee
 
     enum TimerType {

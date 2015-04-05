@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="QPX-BR-sTB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="QPX-BR-sTB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -18,7 +18,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bP3-2G-npW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="237" y="-99"/>
+            <point key="canvasLocation" x="873" y="-115"/>
         </scene>
         <!--Timer Edit View Controller-->
         <scene sceneID="cde-KK-4Ph">
@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4Q-7o-U5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="655" y="-99"/>
+            <point key="canvasLocation" x="1291" y="-115"/>
         </scene>
         <!--Timer List Table View Controller-->
         <scene sceneID="caQ-F2-WrO">
@@ -180,7 +180,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xEU-Ay-V0b"/>
+                    <navigationItem key="navigationItem" id="xEU-Ay-V0b">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="GOs-KZ-tFc">
+                            <connections>
+                                <segue destination="O35-Dl-n7z" kind="modal" identifier="editDetail" id="IAl-GA-IaR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="countdownLabel" destination="SxI-ka-l7T" id="Bur-0u-wxo"/>
                         <outlet property="durationLabel" destination="SsV-dD-Pzw" id="iDb-JN-vDO"/>
@@ -214,6 +220,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="G0f-Ap-cCm"/>
+        <segue reference="IAl-GA-IaR"/>
     </inferredMetricsTieBreakers>
 </document>
