@@ -6,7 +6,7 @@ This is all the code to accompany my [book](https://leanpub.com/yourfirstswiftap
 License
 ----------------
 
-Copyright (c) Ash Furrow, 2014
+Copyright (c) Ash Furrow, 2014–2015
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
