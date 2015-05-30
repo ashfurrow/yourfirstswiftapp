@@ -12,7 +12,7 @@ class TimerModel: NSObject {
     var coffeeName = ""
     var duration = 0
     
-    init(coffeeName: NSString, duration: Int) {
+    init(coffeeName: String, duration: Int) {
         self.coffeeName = coffeeName
         self.duration = duration
         super.init()

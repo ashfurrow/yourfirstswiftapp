@@ -55,11 +55,11 @@ class ViewController: UIViewController {
         println("Preparing for segue with identifier:\(segue.identifier)")
         
         if segue.identifier == "pushDetail" {
-            let viewController = segue.destinationViewController as TimerDetailViewController
+            let viewController = segue.destinationViewController as! TimerDetailViewController
             viewController.timerModel = timerModel
         } else if segue.identifier == "editDetail" {
-            let navigationController = segue.destinationViewController as UINavigationController
-            let viewController = navigationController.topViewController as TimerEditViewController
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let viewController = navigationController.topViewController as! TimerEditViewController
             viewController.timerModel = timerModel
         }
     }
