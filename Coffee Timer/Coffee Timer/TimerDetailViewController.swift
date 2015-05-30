@@ -124,8 +124,8 @@ class TimerDetailViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editDetail" {
-            let navigationController = segue.destinationViewController as UINavigationController
-            let editViewController = navigationController.topViewController as TimerEditViewController
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let editViewController = navigationController.topViewController as! TimerEditViewController
 
             editViewController.timerModel = timerModel
         }
