@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         
         println("View is loaded.")
         
-        view.backgroundColor = UIColor.orangeColor()
+        view.backgroundColor = .orangeColor()
     }
 
     override func didReceiveMemoryWarning() {
