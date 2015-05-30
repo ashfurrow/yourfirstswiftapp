@@ -18,7 +18,7 @@ class TimerModel: NSObject {
         case Tea
     }
 
-    init(name: NSString, duration: Int, type: TimerType) {
+    init(name: String, duration: Int, type: TimerType) {
         self.name = name
         self.duration = duration
         self.type = type

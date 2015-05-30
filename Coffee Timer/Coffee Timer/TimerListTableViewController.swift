@@ -64,7 +64,7 @@ class TimerListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 
         let timerModel = timerModelForIndexPath(indexPath)
         cell.textLabel?.text = timerModel.name
@@ -153,19 +153,19 @@ class TimerListTableViewController: UITableViewController {
             let timerModel = timerModelForIndexPath(indexPath)
 
             if segue.identifier == "pushDetail" {
-                let detailViewController = segue.destinationViewController as TimerDetailViewController
+                let detailViewController = segue.destinationViewController as! TimerDetailViewController
                 detailViewController.timerModel = timerModel
             } else if segue.identifier == "editDetail" {
-                let navigationController = segue.destinationViewController as UINavigationController
-                let editViewController = navigationController.topViewController as TimerEditViewController
+                let navigationController = segue.destinationViewController as! UINavigationController
+                let editViewController = navigationController.topViewController as! TimerEditViewController
 
                 editViewController.timerModel = timerModel
                 editViewController.delegate = self // Note the new line
             }
         } else if let addButton = sender as? UIBarButtonItem {
             if segue.identifier == "newTimer" {
-                let navigationController = segue.destinationViewController as UINavigationController
-                let editViewController = navigationController.topViewController as TimerEditViewController
+                let navigationController = segue.destinationViewController as! UINavigationController
+                let editViewController = navigationController.topViewController as! TimerEditViewController
 
                 editViewController.creatingNewTimer = true
                 editViewController.timerModel = TimerModel(name: "", duration: 240, type: .Coffee)
