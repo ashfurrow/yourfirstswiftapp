@@ -15,6 +15,7 @@
 		5E57B17C19C43A6300940B0B /* TimerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B17B19C43A6300940B0B /* TimerDetailViewController.swift */; };
 		5E57B18019C43F4600940B0B /* TimerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B17F19C43F4600940B0B /* TimerEditViewController.swift */; };
 		5E617CC11B1B64B900D45B3F /* LaunchScreens.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E617CC01B1B64B900D45B3F /* LaunchScreens.xib */; };
+		5E7062651B1B8B64008AE365 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E7062671B1B8B64008AE365 /* InfoPlist.strings */; };
 		5EC4B57B1A61457600792B2B /* TimerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC4B57A1A61457600792B2B /* TimerListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,8 @@
 		5E57B17F19C43F4600940B0B /* TimerEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerEditViewController.swift; sourceTree = "<group>"; };
 		5E617CC01B1B64B900D45B3F /* LaunchScreens.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreens.xib; sourceTree = "<group>"; };
 		5E70625F1B1B89DE008AE365 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		5E7062661B1B8B64008AE365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5E7062691B1B8B65008AE365 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5EC4B57A1A61457600792B2B /* TimerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				5E1F8CE119839CB000A83E4F /* Info.plist */,
+				5E7062671B1B8B64008AE365 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -201,6 +205,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 5E1F8CD419839CB000A83E4F;
 			productRefGroup = 5E1F8CDE19839CB000A83E4F /* Products */;
@@ -219,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E617CC11B1B64B900D45B3F /* LaunchScreens.xib in Resources */,
+				5E7062651B1B8B64008AE365 /* InfoPlist.strings in Resources */,
 				5E1F8CE819839CB100A83E4F /* Main.storyboard in Resources */,
 				5E1F8CEA19839CB100A83E4F /* Images.xcassets in Resources */,
 			);
@@ -272,6 +278,15 @@
 				5E70625F1B1B89DE008AE365 /* fr */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5E7062671B1B8B64008AE365 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E7062661B1B8B64008AE365 /* Base */,
+				5E7062691B1B8B65008AE365 /* fr */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
