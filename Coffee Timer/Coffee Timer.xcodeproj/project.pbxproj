@@ -41,6 +41,7 @@
 		5E57B17B19C43A6300940B0B /* TimerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerDetailViewController.swift; sourceTree = "<group>"; };
 		5E57B17F19C43F4600940B0B /* TimerEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerEditViewController.swift; sourceTree = "<group>"; };
 		5E617CC01B1B64B900D45B3F /* LaunchScreens.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreens.xib; sourceTree = "<group>"; };
+		5E70625F1B1B89DE008AE365 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		5EC4B57A1A61457600792B2B /* TimerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +269,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5E1F8CE719839CB100A83E4F /* Base */,
+				5E70625F1B1B89DE008AE365 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
