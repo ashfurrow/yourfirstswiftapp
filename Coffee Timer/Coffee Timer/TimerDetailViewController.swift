@@ -9,8 +9,7 @@
 import UIKit
 
 class TimerDetailViewController: UIViewController {
-    
-    @IBOutlet weak var durationLabel: UILabel!
+
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var startStopButton: UIButton!
 
@@ -21,8 +20,6 @@ class TimerDetailViewController: UIViewController {
     var timeRemaining: NSInteger {
         if let fireDate = notification?.fireDate {
             let now = NSDate()
-
-            
             return NSInteger(round(fireDate.timeIntervalSinceDate(now)))
         } else {
             return 0
@@ -34,9 +31,7 @@ class TimerDetailViewController: UIViewController {
 
         title = timerModel.name
 
-        durationLabel.text = "\(timerModel.duration / 60) min \(timerModel.duration % 60) sec"
-
-        countdownLabel.text = "Timer not started."
+        countdownLabel.text = timerModel.durationText
 
         timerModel.addObserver(self, forKeyPath: "duration", options: .New, context: nil)
         timerModel.addObserver(self, forKeyPath: "name", options: .New, context: nil)
@@ -76,6 +71,7 @@ class TimerDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem?.enabled = false
         navigationItem.setHidesBackButton(true, animated: true)
         startStopButton.setTitle("Stop", forState: .Normal)
+        startStopButton.setTitleColor(UIColor.redColor(), forState: .Normal)
         timer = NSTimer.scheduledTimerWithTimeInterval(1,
             target: self,
             selector: "timerFired",
@@ -97,22 +93,14 @@ class TimerDetailViewController: UIViewController {
     enum StopTimerReason {
         case Cancelled
         case Completed
-
-        func message() -> String {
-            switch self {
-            case .Cancelled:
-                return "Timer Cancelled."
-            case .Completed:
-                return "Timer Completed."
-            }
-        }
     }
 
     func stopTimer(reason: StopTimerReason) {
         navigationItem.rightBarButtonItem?.enabled = true
         navigationItem.setHidesBackButton(false, animated: true)
-        countdownLabel.text = reason.message()
+        countdownLabel.text = timerModel.durationText
         startStopButton.setTitle("Start", forState: .Normal)
+        startStopButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
         timer?.invalidate()
 
         if reason == .Cancelled {
@@ -141,9 +129,15 @@ class TimerDetailViewController: UIViewController {
         context: UnsafeMutablePointer<Void>) {
 
         if keyPath == "duration" {
-            durationLabel.text = "\(timerModel.duration / 60) min \(timerModel.duration % 60) sec"
+            countdownLabel.text = timerModel.durationText
         } else if keyPath == "name" {
             title = timerModel.name
         }
+    }
+}
+
+extension TimerModel {
+    var durationText: String {
+        return String(format: "%d:%02d", duration / 60, duration % 60)
     }
 }

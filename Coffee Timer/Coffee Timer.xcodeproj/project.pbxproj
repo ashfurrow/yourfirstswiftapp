@@ -14,6 +14,7 @@
 		5E1F8D001983E97A00A83E4F /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F8CFF1983E97A00A83E4F /* TimerModel.swift */; };
 		5E57B17C19C43A6300940B0B /* TimerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B17B19C43A6300940B0B /* TimerDetailViewController.swift */; };
 		5E57B18019C43F4600940B0B /* TimerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B17F19C43F4600940B0B /* TimerEditViewController.swift */; };
+		5E617CC11B1B64B900D45B3F /* LaunchScreens.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E617CC01B1B64B900D45B3F /* LaunchScreens.xib */; };
 		5EC4B57B1A61457600792B2B /* TimerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC4B57A1A61457600792B2B /* TimerListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		5E1F8CFF1983E97A00A83E4F /* TimerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		5E57B17B19C43A6300940B0B /* TimerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerDetailViewController.swift; sourceTree = "<group>"; };
 		5E57B17F19C43F4600940B0B /* TimerEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerEditViewController.swift; sourceTree = "<group>"; };
+		5E617CC01B1B64B900D45B3F /* LaunchScreens.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreens.xib; sourceTree = "<group>"; };
 		5EC4B57A1A61457600792B2B /* TimerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				5E57B17D19C43AAA00940B0B /* View Controllers */,
 				5E57B17E19C43AB100940B0B /* Models */,
 				5E1F8CE919839CB100A83E4F /* Images.xcassets */,
+				5E617CC01B1B64B900D45B3F /* LaunchScreens.xib */,
 				5E1F8CE019839CB000A83E4F /* Supporting Files */,
 			);
 			path = "Coffee Timer";
@@ -214,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E617CC11B1B64B900D45B3F /* LaunchScreens.xib in Resources */,
 				5E1F8CE819839CB100A83E4F /* Main.storyboard in Resources */,
 				5E1F8CEA19839CB100A83E4F /* Images.xcassets in Resources */,
 			);
@@ -352,7 +356,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Coffee Timer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -363,7 +366,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Coffee Timer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
