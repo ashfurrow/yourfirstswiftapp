@@ -46,8 +46,11 @@
 		5E70625F1B1B89DE008AE365 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		5E7062661B1B8B64008AE365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E7062691B1B8B65008AE365 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		5E70626D1B1B9379008AE365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E70626F1B1B937B008AE365 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+=======
+>>>>>>> Localized display name.
 		5EC4B57A1A61457600792B2B /* TimerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +297,7 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		5E70626E1B1B9379008AE365 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -303,6 +307,8 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+=======
+>>>>>>> Localized display name.
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
