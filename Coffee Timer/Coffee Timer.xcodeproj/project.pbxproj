@@ -16,6 +16,7 @@
 		5E57B18019C43F4600940B0B /* TimerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B17F19C43F4600940B0B /* TimerEditViewController.swift */; };
 		5E617CC11B1B64B900D45B3F /* LaunchScreens.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E617CC01B1B64B900D45B3F /* LaunchScreens.xib */; };
 		5E7062651B1B8B64008AE365 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E7062671B1B8B64008AE365 /* InfoPlist.strings */; };
+		5E70626C1B1B9379008AE365 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E70626E1B1B9379008AE365 /* Localizable.strings */; };
 		5EC4B57B1A61457600792B2B /* TimerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC4B57A1A61457600792B2B /* TimerListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,8 @@
 		5E70625F1B1B89DE008AE365 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		5E7062661B1B8B64008AE365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E7062691B1B8B65008AE365 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5E70626D1B1B9379008AE365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5E70626F1B1B937B008AE365 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5EC4B57A1A61457600792B2B /* TimerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +96,7 @@
 				5E57B17E19C43AB100940B0B /* Models */,
 				5E1F8CE919839CB100A83E4F /* Images.xcassets */,
 				5E617CC01B1B64B900D45B3F /* LaunchScreens.xib */,
+				5E70626E1B1B9379008AE365 /* Localizable.strings */,
 				5E1F8CE019839CB000A83E4F /* Supporting Files */,
 			);
 			path = "Coffee Timer";
@@ -223,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E70626C1B1B9379008AE365 /* Localizable.strings in Resources */,
 				5E617CC11B1B64B900D45B3F /* LaunchScreens.xib in Resources */,
 				5E7062651B1B8B64008AE365 /* InfoPlist.strings in Resources */,
 				5E1F8CE819839CB100A83E4F /* Main.storyboard in Resources */,
@@ -287,6 +292,15 @@
 				5E7062691B1B8B65008AE365 /* fr */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5E70626E1B1B9379008AE365 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E70626D1B1B9379008AE365 /* Base */,
+				5E70626F1B1B937B008AE365 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

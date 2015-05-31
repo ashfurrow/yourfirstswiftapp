@@ -28,8 +28,4 @@ class TimerModel: NSObject {
     override var description: String {
         return "TimerModel(\(name))"
     }
-
-    var durationText: String {
-        return String(format: "%d:%02d", duration / 60, duration % 60)
-    }
 }

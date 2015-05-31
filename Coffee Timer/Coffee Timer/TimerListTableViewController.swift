@@ -8,12 +8,12 @@
 
 import UIKit
 
-    extension Array {
-        mutating func moveFrom(source: Int, toDestination destination: Int) {
-            let object = removeAtIndex(source)
-            insert(object, atIndex: destination)
-        }
+extension Array {
+    mutating func moveFrom(source: Int, toDestination destination: Int) {
+        let object = removeAtIndex(source)
+        insert(object, atIndex: destination)
     }
+}
 
 class TimerListTableViewController: UITableViewController {
     var coffeeTimers: [TimerModel]!
@@ -29,13 +29,18 @@ class TimerListTableViewController: UITableViewController {
         super.viewDidLoad()
 
         coffeeTimers = [
-            TimerModel(name: "Colombian", duration: 240, type: .Coffee),
-            TimerModel(name: "Mexican", duration: 200, type: .Coffee)
+            TimerModel(name: NSLocalizedString("Colombian", comment: "Columbian coffee name"),
+                duration: 240, type: .Coffee),
+            TimerModel(name: NSLocalizedString("Mexican", comment: "Mexian coffee name"),
+                duration: 200, type: .Coffee)
         ]
         teaTimers = [
-            TimerModel(name: "Green Tea", duration: 400, type: .Tea),
-            TimerModel(name: "Oolong", duration: 400, type: .Tea),
-            TimerModel(name: "Rooibos", duration: 480, type: .Tea)
+            TimerModel(name: NSLocalizedString("Green Tea", comment: "Green tea name"),
+                duration: 400, type: .Tea),
+            TimerModel(name: NSLocalizedString("Oolong", comment: "Oolon tea name"),
+                duration: 400, type: .Tea),
+            TimerModel(name: NSLocalizedString("Rooibos", comment: "Rooibos tea name"),
+                duration: 480, type: .Tea)
         ]
 
         navigationItem.leftBarButtonItem = editButtonItem()
@@ -74,9 +79,9 @@ class TimerListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == TableSection.Coffee.rawValue {
-            return "Coffees"
+            return NSLocalizedString("Coffees", comment: "Coffee section title")
         } else { // Must be TableSection.Tea
-            return "Teas"
+            return NSLocalizedString("Teas", comment: "Tea section title")
         }
     }
 

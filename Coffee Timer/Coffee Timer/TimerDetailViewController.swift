@@ -70,7 +70,7 @@ class TimerDetailViewController: UIViewController {
     func startTimer() {
         navigationItem.rightBarButtonItem?.enabled = false
         navigationItem.setHidesBackButton(true, animated: true)
-        startStopButton.setTitle("Stop", forState: .Normal)
+        startStopButton.setTitle(NSLocalizedString("Stop", comment: "Stop button title"), forState: .Normal)
         startStopButton.setTitleColor(UIColor.redColor(), forState: .Normal)
         timer = NSTimer.scheduledTimerWithTimeInterval(1,
             target: self,
@@ -80,7 +80,7 @@ class TimerDetailViewController: UIViewController {
 
         // Set up local notification
         let localNotification = UILocalNotification()
-        localNotification.alertBody = "Timer Completed!"
+        localNotification.alertBody = NSLocalizedString("Timer Completed!", comment: "Timer completed alert body")
         localNotification.fireDate = NSDate().dateByAddingTimeInterval(NSTimeInterval(timerModel.duration))
         localNotification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
@@ -99,7 +99,7 @@ class TimerDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem?.enabled = true
         navigationItem.setHidesBackButton(false, animated: true)
         countdownLabel.text = timerModel.durationText
-        startStopButton.setTitle("Start", forState: .Normal)
+        startStopButton.setTitle(NSLocalizedString("Start", comment: "Start button title"), forState: .Normal)
         startStopButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
         timer?.invalidate()
 

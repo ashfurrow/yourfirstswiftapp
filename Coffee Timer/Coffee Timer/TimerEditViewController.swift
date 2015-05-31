@@ -78,7 +78,7 @@ class TimerEditViewController: UIViewController {
         }
         
         
-        minutesLabel.text = pluralize(minutes, "minute", "minutes")
-        secondsLabel.text = pluralize(seconds, "second", "seconds")
+        minutesLabel.text = pluralize(minutes, NSLocalizedString("minute", comment: "minute singular"), NSLocalizedString("minutes", comment: "minute plural"))
+        secondsLabel.text = pluralize(seconds, NSLocalizedString("second", comment: "second singular"), NSLocalizedString("seconds", comment: "second plural"))
     }
 }
