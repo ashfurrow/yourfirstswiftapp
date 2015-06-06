@@ -65,6 +65,8 @@ class CoreDataStack {
                     model.duration = 480
                     model.type = .Tea
                 }
+
+                model.displayOrder = Int32(i)
             }
         }
     }

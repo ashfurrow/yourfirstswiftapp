@@ -16,7 +16,7 @@ class TimerModel: NSManagedObject {
         case Tea
     }
 
-    @NSManaged var name: String
+    @NSManaged var name: String?
     @NSManaged var duration: Int32
     @NSManaged var type: TimerType
     @NSManaged var displayOrder: Int32

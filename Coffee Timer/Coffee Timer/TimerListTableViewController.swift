@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension Array {
     mutating func moveFrom(source: Int, toDestination destination: Int) {
@@ -16,8 +17,19 @@ extension Array {
 }
 
 class TimerListTableViewController: UITableViewController {
-    var coffeeTimers: [TimerModel]!
-    var teaTimers: [TimerModel]!
+
+    var userReorderingCells = false
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let fetchRequest = NSFetchRequest(entityName: "TimerModel")
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "type", ascending: true),
+            NSSortDescriptor(key: "displayOrder", ascending: true)
+        ]
+
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: appDelegate().coreDataStack.managedObjectContext, sectionNameKeyPath: "type", cacheName: nil)
+        controller.delegate = self
+        return controller
+    }()
 
     enum TableSection: Int {
         case Coffee = 0
@@ -27,6 +39,11 @@ class TimerListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let error = NSErrorPointer()
+        if !fetchedResultsController.performFetch(error) {
+            println("Error fetching: \(error)")
+        }
 
         navigationItem.leftBarButtonItem = editButtonItem()
     }
@@ -42,15 +59,13 @@ class TimerListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return TableSection.NumberOfSections.rawValue
+        return count(fetchedResultsController.sections ?? [])
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == TableSection.Coffee.rawValue {
-            return coffeeTimers.count
-        } else { // Must be section TableSection.Tea
-            return teaTimers.count
-        }
+        let sectionInfo = fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo
+
+        return sectionInfo?.numberOfObjects ?? 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -96,11 +111,25 @@ class TimerListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        if sourceIndexPath.section == TableSection.Coffee.rawValue {
-            coffeeTimers.moveFrom(sourceIndexPath.row, toDestination: destinationIndexPath.row)
-        } else { // Must be TableSection.Tea
-            teaTimers.moveFrom(sourceIndexPath.row, toDestination: destinationIndexPath.row)
+        userReorderingCells = true
+
+        // Grab the section and the TimerModels in the section
+        let sectionInfo = fetchedResultsController.sections?[sourceIndexPath.section] as? NSFetchedResultsSectionInfo
+        var objectsInSection = sectionInfo?.objects ?? []
+
+        // Rearrange the order to match the user's actions
+        // Note: this doesn't move anything in Core Data, just our objectsInSection array
+        objectsInSection.moveFrom(sourceIndexPath.row, toDestination: destinationIndexPath.row)
+
+        // The models are now in the correct order.
+        // Update their displayOrder to match the new order.
+        for i in 0..<count(objectsInSection) {
+            let model = objectsInSection[i] as? TimerModel
+            model?.displayOrder = Int32(i)
         }
+        
+        userReorderingCells = false
+        appDelegate().coreDataStack.managedObjectContext.save(nil)
     }
 
     override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
@@ -115,7 +144,11 @@ class TimerListTableViewController: UITableViewController {
             // This is coming from the coffee section, so return
             // the last index path in that section.
 
-            return NSIndexPath(forItem: coffeeTimers.count - 1, inSection: 0)
+            let sectionInfo = fetchedResultsController.sections?[TableSection.Coffee.rawValue] as? NSFetchedResultsSectionInfo
+
+            let numberOfCoffeTimers = sectionInfo?.numberOfObjects ?? 0
+
+            return NSIndexPath(forItem: numberOfCoffeTimers - 1, inSection: 0)
         } else { // Must be TableSection.Tea
             // This is coming from the tea section, so return
             // the first index path in that section.
@@ -127,11 +160,7 @@ class TimerListTableViewController: UITableViewController {
     // MARK: - Utility methods
 
     func timerModelForIndexPath(indexPath: NSIndexPath) -> TimerModel {
-        if indexPath.section == TableSection.Coffee.rawValue {
-            return coffeeTimers[indexPath.row]
-        } else { // Must be TableSection.Tea
-            return teaTimers[indexPath.row]
-        }
+        return fetchedResultsController.objectAtIndexPath(indexPath) as! TimerModel
     }
 
     // MARK: - Navigation
@@ -158,7 +187,8 @@ class TimerListTableViewController: UITableViewController {
                 let editViewController = navigationController.topViewController as! TimerEditViewController
 
                 editViewController.creatingNewTimer = true
-//                editViewController.timerModel = TimerModel(name: "", duration: 240, type: .Coffee)
+
+                editViewController.timerModel = NSEntityDescription.insertNewObjectForEntityForName("TimerModel", inManagedObjectContext: appDelegate().coreDataStack.managedObjectContext) as! TimerModel
                 editViewController.delegate = self
             }
         }
@@ -173,47 +203,51 @@ class TimerListTableViewController: UITableViewController {
 
         return true
     }
+
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let timer = timerModelForIndexPath(indexPath)
+            timer.managedObjectContext?.deleteObject(timer)
+        }
+    }
+}
+
+extension TimerListTableViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+
+        if userReorderingCells {
+            return
+        }
+
+        switch type {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        case .Move:
+            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+        case .Update:
+            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        }
+    }
 }
 
 extension TimerListTableViewController: TimerEditViewControllerDelegate {
     func timerEditViewControllerDidCancel(viewController: TimerEditViewController) {
-        // Nothing to do for now
+        if viewController.creatingNewTimer {
+            appDelegate().coreDataStack.managedObjectContext.deleteObject(viewController.timerModel)
+        }
     }
 
     func timerEditViewControllerDidSave(viewController: TimerEditViewController) {
-        let model = viewController.timerModel
-        let type = model.type
-
-        if type == .Coffee {
-            if !contains(coffeeTimers, model) {
-                coffeeTimers.append(model)
-            }
-
-            teaTimers = teaTimers.filter({ (item) -> Bool in
-                return item != model
-            })
-        } else { // Type must be .Tea
-            if !contains(teaTimers, model) {
-                teaTimers.append(model)
-            }
-
-            coffeeTimers = coffeeTimers.filter({ (item) -> Bool in
-                return item != model
-            })
-        }
-    }
-
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the data from the array.
-
-            if indexPath.section == TableSection.Coffee.rawValue {
-                coffeeTimers.removeAtIndex(indexPath.row)
-            } else { // Must be TableSection.Tea
-                teaTimers.removeAtIndex(indexPath.row)
-            }
-
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        }
+        appDelegate().coreDataStack.managedObjectContext.save(nil)
     }
 }

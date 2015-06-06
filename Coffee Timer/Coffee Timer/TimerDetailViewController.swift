@@ -8,13 +8,6 @@
 
 import UIKit
 
-// TODO: Do this in the last chapter oops
-extension TimerModel {
-    var durationText: String {
-        return String(format: "%d:%02d", duration / 60, duration % 60)
-    }
-}
-
 class TimerDetailViewController: UIViewController {
 
     @IBOutlet weak var countdownLabel: UILabel!
