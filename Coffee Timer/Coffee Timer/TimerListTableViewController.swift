@@ -28,21 +28,6 @@ class TimerListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        coffeeTimers = [
-            TimerModel(name: NSLocalizedString("Colombian", comment: "Columbian coffee name"),
-                duration: 240, type: .Coffee),
-            TimerModel(name: NSLocalizedString("Mexican", comment: "Mexian coffee name"),
-                duration: 200, type: .Coffee)
-        ]
-        teaTimers = [
-            TimerModel(name: NSLocalizedString("Green Tea", comment: "Green tea name"),
-                duration: 400, type: .Tea),
-            TimerModel(name: NSLocalizedString("Oolong", comment: "Oolon tea name"),
-                duration: 400, type: .Tea),
-            TimerModel(name: NSLocalizedString("Rooibos", comment: "Rooibos tea name"),
-                duration: 480, type: .Tea)
-        ]
-
         navigationItem.leftBarButtonItem = editButtonItem()
     }
 
@@ -173,7 +158,7 @@ class TimerListTableViewController: UITableViewController {
                 let editViewController = navigationController.topViewController as! TimerEditViewController
 
                 editViewController.creatingNewTimer = true
-                editViewController.timerModel = TimerModel(name: "", duration: 240, type: .Coffee)
+//                editViewController.timerModel = TimerModel(name: "", duration: 240, type: .Coffee)
                 editViewController.delegate = self
             }
         }

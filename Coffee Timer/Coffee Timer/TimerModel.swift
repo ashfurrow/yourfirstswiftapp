@@ -2,30 +2,23 @@
 //  TimerModel.swift
 //  Coffee Timer
 //
-//  Created by Ash Furrow on 2014-07-26.
-//  Copyright (c) 2014 Ash Furrow. All rights reserved.
+//  Created by Ash Furrow on 2015-06-06.
+//  Copyright (c) 2015 Ash Furrow. All rights reserved.
 //
 
 import Foundation
+import CoreData
 
-class TimerModel: NSObject {
-    dynamic var name = ""
-    dynamic var duration = 0
-    var type = TimerType.Coffee
+class TimerModel: NSManagedObject {
 
-    enum TimerType {
-        case Coffee
+    @objc enum TimerType: Int32 {
+        case Coffee = 0
         case Tea
     }
 
-    init(name: String, duration: Int, type: TimerType) {
-        self.name = name
-        self.duration = duration
-        self.type = type
-        super.init()
-    }
-    
-    override var description: String {
-        return "TimerModel(\(name))"
-    }
+    @NSManaged var name: String
+    @NSManaged var duration: Int32
+    @NSManaged var type: TimerType
+    @NSManaged var displayOrder: Int32
+
 }

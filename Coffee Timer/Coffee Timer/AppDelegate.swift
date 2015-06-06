@@ -13,12 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
+    lazy var coreDataStack: CoreDataStack = {
+        return CoreDataStack()
+    }()
+
     func method (arg: String!) {
         print(arg)
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         println("Application has launched.")
+
+        coreDataStack.loadDefaultDataIfFirstLaunch()
 
         window?.tintColor = UIColor(red:0.95, green:0.53, blue:0.27, alpha:1)
 
@@ -27,6 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillResignActive(application: UIApplication) {
         println("Application has resigned active.")
+
+        let error = NSErrorPointer()
+        if !coreDataStack.managedObjectContext.save(error) {
+            println("Error saving context: \(error)")
+        }
     }
 
     func applicationDidEnterBackground(application: UIApplication) {

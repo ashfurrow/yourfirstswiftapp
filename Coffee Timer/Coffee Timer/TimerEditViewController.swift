@@ -30,7 +30,7 @@ class TimerEditViewController: UIViewController {
         super.viewDidLoad()
 
         let numberOfMinutes = Int(timerModel.duration / 60)
-        let numberOfSeconds = timerModel.duration % 60
+        let numberOfSeconds = Int(timerModel.duration % 60)
         nameField.text = timerModel.name
         updateLabelsWithMinutes(numberOfMinutes, seconds: numberOfSeconds)
         minutesSlider.value = Float(numberOfMinutes)
@@ -50,7 +50,7 @@ class TimerEditViewController: UIViewController {
     
     @IBAction func doneWasPressed(sender: UIBarButtonItem) {
         timerModel.name = nameField.text
-        timerModel.duration = Int(minutesSlider.value) * 60 + Int(secondsSlider.value)
+        timerModel.duration = Int32(Int(minutesSlider.value) * 60 + Int(secondsSlider.value))
         if timerTypeSegmentedControl.selectedSegmentIndex == 0 {
             timerModel.type = .Coffee
         } else { // Must be 1
