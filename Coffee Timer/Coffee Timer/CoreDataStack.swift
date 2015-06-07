@@ -57,7 +57,7 @@ class CoreDataStack {
                     model.duration = 400
                     model.type = .Tea
                 case 3:
-                    model.name = NSLocalizedString("Oolong", comment: "Oolon tea name")
+                    model.name = NSLocalizedString("Oolong", comment: "Oolong tea name")
                     model.duration = 400
                     model.type = .Tea
                 default: // case 4:
