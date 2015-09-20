@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonWasPressed(sender: AnyObject) {
-        println("Button was pressed.")
+        print("Button was pressed.")
         
         // Get the current date and time
         let date = NSDate()
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         label.text = "Button pressed at \(date)"
     }
     @IBAction func sliderValueChanged(sender: AnyObject) {
-        println("Slider value changed to \(slider.value)")
+        print("Slider value changed to \(slider.value)")
         
         // Update our progressView's progress to match 
         // the slider's value
