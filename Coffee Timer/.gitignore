@@ -1,8 +1,4 @@
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control?
-#
-# Pods/
-
+Coffee Timer.xcodeproj/project.xcworkspace/xcshareddata/
+*.xcuserstate
+Coffee Timer.xcodeproj/xcshareddata/xcschemes/Artsy.xcscheme
+Coffee Timer.xcworkspace/xcuserdata/*

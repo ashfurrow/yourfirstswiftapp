@@ -21,8 +21,11 @@ class CoreDataStack {
         let storeURL = self.applicationDocumentsDirectory().URLByAppendingPathComponent("CoffeeTimer.sqlite")
 
         let errorPointer = NSErrorPointer()
-        if coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, error: errorPointer) == nil {
-            println("Unresolved error adding persistent store: \(errorPointer.memory)")
+
+        do {
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+        } catch {
+            print("Unresolved error adding persistent store: \(error)")
         }
 
         return coordinator
@@ -72,6 +75,6 @@ class CoreDataStack {
     }
 
     private func applicationDocumentsDirectory() -> NSURL {
-        return NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first as! NSURL
+        return NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first!
     }
 }

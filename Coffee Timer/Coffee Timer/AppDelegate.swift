@@ -14,7 +14,7 @@ func appDelegate() -> AppDelegate {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-                            
+
     var window: UIWindow?
 
     lazy var coreDataStack: CoreDataStack = {
@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(arg)
     }
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        println("Application has launched.")
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        print("Application has launched.")
 
         coreDataStack.loadDefaultDataIfFirstLaunch()
 
@@ -36,32 +36,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(application: UIApplication) {
-        println("Application has resigned active.")
+        print("Application has resigned active.")
 
-        let error = NSErrorPointer()
-        if !coreDataStack.managedObjectContext.save(error) {
-            println("Error saving context: \(error)")
+        do {
+            try coreDataStack.managedObjectContext.save()
+        } catch {
+            print("Error saving context: \(error)")
         }
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        println("Application has entered background.")
+        print("Application has entered background.")
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        println("Application has entered foreground.")
+        print("Application has entered foreground.")
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        println("Application has become active.")
+        print("Application has become active.")
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        println("Application will terminate.")
+        print("Application will terminate.")
     }
 
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        println("Application received local notification.")
+        print("Application received local notification.")
 
         let alertController = UIAlertController(title: notification.alertTitle, message: notification.alertBody, preferredStyle: .Alert)
 

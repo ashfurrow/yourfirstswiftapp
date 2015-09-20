@@ -16,16 +16,16 @@ import UIKit
 class TimerEditViewController: UIViewController {
     var creatingNewTimer = false
     weak var delegate: TimerEditViewControllerDelegate?
-    
+
     var timerModel: TimerModel!
-    
+
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var minutesLabel: UILabel!
     @IBOutlet weak var minutesSlider: UISlider!
     @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var secondsSlider: UISlider!
     @IBOutlet weak var timerTypeSegmentedControl: UISegmentedControl!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,15 +42,16 @@ class TimerEditViewController: UIViewController {
             timerTypeSegmentedControl.selectedSegmentIndex = 1
         }
     }
-    
+
     @IBAction func cancelWasPressed(sender: UIBarButtonItem) {
         delegate?.timerEditViewControllerDidCancel(self)
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     @IBAction func doneWasPressed(sender: UIBarButtonItem) {
-        timerModel.name = nameField.text
-        timerModel.duration = Int32(Int(minutesSlider.value) * 60 + Int(secondsSlider.value))
+        timerModel.name = nameField.text ?? ""
+        timerModel.duration = Int32(minutesSlider.value) * 60 + Int32(secondsSlider.value)
+
         if timerTypeSegmentedControl.selectedSegmentIndex == 0 {
             timerModel.type = .Coffee
         } else { // Must be 1
@@ -60,13 +61,13 @@ class TimerEditViewController: UIViewController {
         delegate?.timerEditViewControllerDidSave(self)
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     @IBAction func sliderValueChanged(sender: UISlider) {
         let numberOfMinutes = Int(minutesSlider.value)
         let numberOfSeconds = Int(secondsSlider.value)
         updateLabelsWithMinutes(numberOfMinutes, seconds: numberOfSeconds)
     }
-    
+
     func updateLabelsWithMinutes(minutes: Int, seconds: Int) {
         func pluralize(value: Int, singular: String, plural: String) -> String {
             switch value {
@@ -76,9 +77,9 @@ class TimerEditViewController: UIViewController {
                 return "\(pluralValue) \(plural)"
             }
         }
-        
-        
-        minutesLabel.text = pluralize(minutes, NSLocalizedString("minute", comment: "minute singular"), NSLocalizedString("minutes", comment: "minute plural"))
-        secondsLabel.text = pluralize(seconds, NSLocalizedString("second", comment: "second singular"), NSLocalizedString("seconds", comment: "second plural"))
+
+
+        minutesLabel.text = pluralize(minutes, singular: NSLocalizedString("minute", comment: "minute singular"), plural: NSLocalizedString("minutes", comment: "minute plural"))
+        secondsLabel.text = pluralize(seconds, singular: NSLocalizedString("second", comment: "second singular"), plural: NSLocalizedString("seconds", comment: "second plural"))
     }
 }
