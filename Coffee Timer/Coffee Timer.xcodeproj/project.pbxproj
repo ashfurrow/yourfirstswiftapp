@@ -12,6 +12,7 @@
 		5E1F8CE819839CB100A83E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E1F8CE619839CB100A83E4F /* Main.storyboard */; };
 		5E1F8CEA19839CB100A83E4F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1F8CE919839CB100A83E4F /* Images.xcassets */; };
 		5E1F8CF619839CB100A83E4F /* Coffee_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F8CF519839CB100A83E4F /* Coffee_TimerTests.swift */; };
+		5E9B8F711BAE377900D9B6E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E9B8F701BAE377900D9B6E7 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		5E1F8CEF19839CB100A83E4F /* Coffee TimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Coffee TimerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1F8CF419839CB100A83E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E1F8CF519839CB100A83E4F /* Coffee_TimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee_TimerTests.swift; sourceTree = "<group>"; };
+		5E9B8F701BAE377900D9B6E7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				5E1F8CE619839CB100A83E4F /* Main.storyboard */,
 				5E1F8CE919839CB100A83E4F /* Images.xcassets */,
 				5E1F8CE019839CB000A83E4F /* Supporting Files */,
+				5E9B8F701BAE377900D9B6E7 /* LaunchScreen.storyboard */,
 			);
 			path = "Coffee Timer";
 			sourceTree = "<group>";
@@ -153,7 +156,9 @@
 		5E1F8CD519839CB000A83E4F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Ash Furrow";
 				TargetAttributes = {
 					5E1F8CDC19839CB000A83E4F = {
@@ -189,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E9B8F711BAE377900D9B6E7 /* LaunchScreen.storyboard in Resources */,
 				5E1F8CE819839CB100A83E4F /* Main.storyboard in Resources */,
 				5E1F8CEA19839CB100A83E4F /* Images.xcassets in Resources */,
 			);
@@ -263,6 +269,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -324,9 +331,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Coffee Timer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashfurrow.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -335,9 +342,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Coffee Timer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashfurrow.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -356,6 +363,7 @@
 				);
 				INFOPLIST_FILE = "Coffee TimerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashfurrow.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -371,6 +379,7 @@
 				);
 				INFOPLIST_FILE = "Coffee TimerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashfurrow.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -395,6 +404,7 @@
 				5E1F8CFB19839CB100A83E4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E1F8CFC19839CB100A83E4F /* Build configuration list for PBXNativeTarget "Coffee TimerTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +413,7 @@
 				5E1F8CFE19839CB100A83E4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

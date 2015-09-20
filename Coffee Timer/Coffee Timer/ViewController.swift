@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("View is loaded.")
+        print("View is loaded.")
         
         view.backgroundColor = .orangeColor()
     }
