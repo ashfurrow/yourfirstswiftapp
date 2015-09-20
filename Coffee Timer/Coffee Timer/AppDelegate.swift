@@ -17,29 +17,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(arg)
     }
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        println("Application has launched.")
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        print("Application has launched.")
         return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
-        println("Application has resigned active.")
+        print("Application has resigned active.")
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        println("Application has entered background.")
+        print("Application has entered background.")
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        println("Application has entered foreground.")
+        print("Application has entered foreground.")
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        println("Application has become active.")
+        print("Application has become active.")
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        println("Application will terminate.")
+        print("Application will terminate.")
     }
 
 

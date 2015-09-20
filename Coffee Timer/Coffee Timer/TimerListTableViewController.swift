@@ -91,7 +91,7 @@ class TimerListTableViewController: UITableViewController {
         return true
     }
 
-    override func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject) -> Bool {
+    override func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
         if action == "copy:" {
             return true
         }
@@ -162,7 +162,7 @@ class TimerListTableViewController: UITableViewController {
                 editViewController.timerModel = timerModel
                 editViewController.delegate = self // Note the new line
             }
-        } else if let addButton = sender as? UIBarButtonItem {
+        } else if let _ = sender as? UIBarButtonItem {
             if segue.identifier == "newTimer" {
                 let navigationController = segue.destinationViewController as! UINavigationController
                 let editViewController = navigationController.topViewController as! TimerEditViewController
@@ -195,7 +195,7 @@ extension TimerListTableViewController: TimerEditViewControllerDelegate {
         let type = model.type
 
         if type == .Coffee {
-            if !contains(coffeeTimers, model) {
+            if !coffeeTimers.contains(model) {
                 coffeeTimers.append(model)
             }
 
@@ -203,7 +203,7 @@ extension TimerListTableViewController: TimerEditViewControllerDelegate {
                 return item != model
             })
         } else { // Type must be .Tea
-            if !contains(teaTimers, model) {
+            if !teaTimers.contains(model) {
                 teaTimers.append(model)
             }
 
