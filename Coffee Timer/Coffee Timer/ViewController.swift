@@ -12,19 +12,19 @@ class ViewController: UIViewController {
     
     var timerModel: TimerModel! {
         willSet(newModel) {
-            println("About to change model to \(newModel)")
+            print("About to change model to \(newModel)")
         }
         
         didSet {
-            println("Set model to \(timerModel)")
+            print("Set model to \(timerModel)")
             updateUserInterface()
         }
     }
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println("View is loaded.")
+
+        print("View is loaded.")
         title = "Root"
         
         setupModel()
@@ -34,13 +34,13 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func shouldAutorotate() -> Bool {
         return false
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .Portrait
     }
     
     func setupModel() {
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("Preparing for segue with identifier:\(segue.identifier)")
+        print("Preparing for segue with identifier:\(segue.identifier)")
         
         if segue.identifier == "pushDetail" {
             let viewController = segue.destinationViewController as! TimerDetailViewController

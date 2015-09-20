@@ -43,7 +43,7 @@ class TimerDetailViewController: UIViewController {
         super.viewDidAppear(animated)
 
         // Request local notifications and set up local notification
-        let settings = UIUserNotificationSettings(forTypes: (.Alert | .Sound), categories: nil)
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
     }
 
