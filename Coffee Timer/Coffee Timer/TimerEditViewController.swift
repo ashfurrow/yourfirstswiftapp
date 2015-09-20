@@ -49,7 +49,7 @@ class TimerEditViewController: UIViewController {
     }
     
     @IBAction func doneWasPressed(sender: UIBarButtonItem) {
-        timerModel.name = nameField.text
+        timerModel.name = nameField.text ?? ""
         timerModel.duration = Int(minutesSlider.value) * 60 + Int(secondsSlider.value)
         if timerTypeSegmentedControl.selectedSegmentIndex == 0 {
             timerModel.type = .Coffee
@@ -78,7 +78,7 @@ class TimerEditViewController: UIViewController {
         }
         
         
-        minutesLabel.text = pluralize(minutes, "minute", "minutes")
-        secondsLabel.text = pluralize(seconds, "second", "seconds")
+        minutesLabel.text = pluralize(minutes, singular: "minute", plural: "minutes")
+        secondsLabel.text = pluralize(seconds, singular: "second", plural: "seconds")
     }
 }
