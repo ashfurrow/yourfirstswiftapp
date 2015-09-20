@@ -46,7 +46,7 @@ class TimerDetailViewController: UIViewController {
         super.viewDidAppear(animated)
 
         // Request local notifications and set up local notification
-        let settings = UIUserNotificationSettings(forTypes: (.Alert | .Sound), categories: nil)
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
     }
 
@@ -135,9 +135,9 @@ class TimerDetailViewController: UIViewController {
         timerModel.removeObserver(self, forKeyPath: "name")
     }
 
-    override func observeValueForKeyPath(keyPath: String,
-        ofObject object: AnyObject,
-        change: [NSObject : AnyObject],
+    override func observeValueForKeyPath(keyPath: String?,
+        ofObject object: AnyObject?,
+        change: [String : AnyObject]?,
         context: UnsafeMutablePointer<Void>) {
 
         if keyPath == "duration" {
