@@ -38,11 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(application: UIApplication) {
         print("Application has resigned active.")
 
-        do {
-            try coreDataStack.managedObjectContext.save()
-        } catch {
-            print("Error saving context: \(error)")
-        }
+        coreDataStack.save()
     }
 
     func applicationDidEnterBackground(application: UIApplication) {

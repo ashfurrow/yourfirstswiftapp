@@ -72,6 +72,16 @@ class CoreDataStack {
                 model.displayOrder = Int32(i)
             }
         }
+
+        save()
+    }
+
+    func save() {
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("Error saving context: \(error)")
+        }
     }
 
     private func applicationDocumentsDirectory() -> NSURL {

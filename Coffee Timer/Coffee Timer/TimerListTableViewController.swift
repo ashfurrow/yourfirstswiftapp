@@ -130,7 +130,7 @@ class TimerListTableViewController: UITableViewController {
         }
 
         userReorderingCells = false
-        let _ = try? appDelegate().coreDataStack.managedObjectContext.save()
+        appDelegate().coreDataStack.save()
     }
 
     override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
@@ -264,6 +264,6 @@ extension TimerListTableViewController: TimerEditViewControllerDelegate {
     }
 
     func timerEditViewControllerDidSave(viewController: TimerEditViewController) {
-        let _ = try? appDelegate().coreDataStack.managedObjectContext.save()
+        appDelegate().coreDataStack.save()
     }
 }
