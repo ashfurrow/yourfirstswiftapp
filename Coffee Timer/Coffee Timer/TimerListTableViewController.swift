@@ -239,6 +239,21 @@ extension TimerListTableViewController: NSFetchedResultsControllerDelegate {
             tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
         }
     }
+
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+
+        if userReorderingCells {
+            return
+        }
+
+        switch type {
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        default: break
+        }
+    }
 }
 
 extension TimerListTableViewController: TimerEditViewControllerDelegate {
