@@ -40,6 +40,10 @@ class CoreDataStack {
         let key = "hasLaunchedBefore"
         let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey(key)
 
+        defer {
+            save()
+        }
+
         if launchedBefore == false {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: key)
 
@@ -72,8 +76,6 @@ class CoreDataStack {
                 model.displayOrder = Int32(i)
             }
         }
-
-        save()
     }
 
     func save() {

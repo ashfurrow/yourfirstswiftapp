@@ -18,12 +18,12 @@ class TimerDetailViewController: UIViewController {
     weak var timer: NSTimer?
     var notification: UILocalNotification?
     var timeRemaining: NSInteger {
-        if let fireDate = notification?.fireDate {
-            let now = NSDate()
-            return NSInteger(round(fireDate.timeIntervalSinceDate(now)))
-        } else {
+        guard let fireDate = notification?.fireDate else {
             return 0
         }
+
+        let now = NSDate()
+        return NSInteger(round(fireDate.timeIntervalSinceDate(now)))
     }
 
     override func viewDidLoad() {

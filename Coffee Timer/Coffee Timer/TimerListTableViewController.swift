@@ -87,10 +87,10 @@ class TimerListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if tableView.editing {
-            let cell = tableView.cellForRowAtIndexPath(indexPath)
-            performSegueWithIdentifier("editDetail", sender: cell)
-        }
+        guard tableView.editing else { return }
+
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        performSegueWithIdentifier("editDetail", sender: cell)
     }
 
     override func tableView(tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -224,9 +224,7 @@ extension TimerListTableViewController: NSFetchedResultsControllerDelegate {
 
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
 
-        if userReorderingCells {
-            return
-        }
+        guard userReorderingCells == false else { return }
 
         switch type {
         case .Insert:
@@ -242,9 +240,7 @@ extension TimerListTableViewController: NSFetchedResultsControllerDelegate {
 
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
 
-        if userReorderingCells {
-            return
-        }
+        guard userReorderingCells == false else { return }
 
         switch type {
         case .Insert:
