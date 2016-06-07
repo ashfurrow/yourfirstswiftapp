@@ -128,9 +128,19 @@ class TimerListTableViewController: UITableViewController {
         }
 
         // Disable the delegate when saving the Core Data changes: the cells are
-        // already in the correct state at this point.
+        // already in the correct positions at this point.
         fetchedResultsController.delegate = nil
+        
+        // Save the managed object context, then perform a fetch so that the objects within
+        // the fetchedResultsController are in the right place.
         appDelegate().coreDataStack.save()
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error fetching: \(error)")
+        }
+        
+        // Reassign the delegate so that changes will be tracked again.
         fetchedResultsController.delegate = self
     }
 
