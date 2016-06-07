@@ -18,7 +18,6 @@ extension Array {
 
 class TimerListTableViewController: UITableViewController {
 
-    var userReorderingCells = false
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest(entityName: "TimerModel")
         fetchRequest.sortDescriptors = [
@@ -112,7 +111,6 @@ class TimerListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        userReorderingCells = true
 
         // Grab the section and the TimerModels in the section
         let sectionInfo = fetchedResultsController.sections?[sourceIndexPath.section]
@@ -124,17 +122,16 @@ class TimerListTableViewController: UITableViewController {
 
         // The models are now in the correct order.
         // Update their displayOrder to match the new order.
-        print("Updating model")
         for i in 0..<objectsInSection.count {
             let model = objectsInSection[i] as? TimerModel
             model?.displayOrder = Int32(i)
         }
-        print("Finished updating model")
 
-        userReorderingCells = false
-        
-        print("Saving managed object context.")
+        // Disable the delegate when saving the Core Data changes: the cells are
+        // already in the correct state at this point.
+        fetchedResultsController.delegate = nil
         appDelegate().coreDataStack.save()
+        fetchedResultsController.delegate = self
     }
 
     override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
@@ -228,18 +225,12 @@ extension TimerListTableViewController: NSFetchedResultsControllerDelegate {
 
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
 
-        guard userReorderingCells == false else { 
-            print("Controller did change object, but user reordering cells: skipping.")
-            return
-        }
-
         switch type {
         case .Insert:
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
         case .Move:
-            print("Controller did change object: moving cells")
             tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         case .Update:
             tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
@@ -247,8 +238,6 @@ extension TimerListTableViewController: NSFetchedResultsControllerDelegate {
     }
 
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-
-        guard userReorderingCells == false else { return }
 
         switch type {
         case .Insert:
